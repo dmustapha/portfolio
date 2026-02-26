@@ -90,8 +90,8 @@ export const skillGroups: SkillGroup[] = [
 
 // ── About ──
 export const aboutParagraphs = [
-  'I build full-stack software — from payment gateways and real-time multiplayer games to privacy tools and asset platforms. Clean architecture, tested code, built for real users.',
-  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side — building the tools instead of just using them. Shipped four projects across four chains in six weeks, and placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
+  'I build full-stack software: payment gateways, real-time multiplayer games, privacy tools, and asset platforms. Clean architecture, tested code, built for real users.',
+  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Shipped four projects across four chains in six weeks. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
   'I studied medicine (MBBS) before writing code. It taught me how to diagnose problems and sit with complexity until I find the root cause.',
 ] as const;
 

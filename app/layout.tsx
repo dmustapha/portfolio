@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Damilola Mustapha — Full-Stack Developer",
+  title: "Damilola Mustapha | Full-Stack Developer",
   description: "Full-Stack Developer. Blockchain, payments, real-time systems.",
 };
 

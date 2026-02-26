@@ -135,7 +135,7 @@ export function useFullpageScroll({
         if (isAnimatingRef.current) return;
         const handled = onCarouselNavigate(direction);
         if (handled) return;
-        // At carousel boundary — fall through to fullpage
+        // At carousel boundary, fall through to fullpage
       }
 
       if (isAnimatingRef.current) return;
