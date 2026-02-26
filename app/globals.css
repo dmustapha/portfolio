@@ -291,12 +291,12 @@ body {
   50% { transform: scale(1.6); opacity: 0; }
 }
 
-/* Mobile section label — hidden on desktop */
+/* Mobile section label - hidden on desktop */
 .dot-nav-label {
   display: none;
 }
 
-/* Dots wrapper — column on desktop (matches parent), row on mobile */
+/* Dots wrapper - column on desktop (matches parent), row on mobile */
 .dot-nav-dots {
   display: flex;
   flex-direction: column;
@@ -1201,7 +1201,7 @@ body {
     overflow-wrap: break-word;
   }
 
-  /* Skills — tighter on mobile */
+  /* Skills - tighter on mobile */
   .skills-grid {
     gap: 1.5rem;
   }
@@ -1210,7 +1210,7 @@ body {
     padding: 0.35rem 0.75rem;
   }
 
-  /* Project cards — mobile polish */
+  /* Project cards - mobile polish */
   .project-snap-section::after {
     display: none;
   }
@@ -1218,13 +1218,13 @@ body {
     font-size: clamp(1.75rem, 7vw, 2.5rem);
   }
 
-  /* Hero — mobile typography */
+  /* Hero - mobile typography */
   .hero-description {
     font-size: 0.875rem;
     line-height: 1.7;
   }
 
-  /* About — tighter line height */
+  /* About - tighter line height */
   .about-text {
     font-size: 0.9375rem;
     line-height: 1.7;
@@ -1234,7 +1234,7 @@ body {
     line-height: 1.65;
   }
 
-  /* Contact email — prevent overflow */
+  /* Contact email - prevent overflow */
   .contact-email {
     font-size: clamp(0.875rem, 4vw, 1.25rem);
     word-break: break-all;
