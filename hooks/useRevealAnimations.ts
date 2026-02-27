@@ -237,7 +237,7 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+      { threshold: 0.3, rootMargin: '0px 0px -80px 0px' }
     );
 
     requestAnimationFrame(() => {
