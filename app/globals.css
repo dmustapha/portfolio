@@ -420,6 +420,13 @@ body {
   .reveal-up.revealed {
     animation: reveal-from-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+
+  /* Staggered animation delays for mobile */
+  .delay-1.revealed { animation-delay: 0.1s; }
+  .delay-2.revealed { animation-delay: 0.2s; }
+  .delay-3.revealed { animation-delay: 0.3s; }
+  .delay-4.revealed { animation-delay: 0.4s; }
+  .delay-5.revealed { animation-delay: 0.5s; }
 }
 
 @keyframes reveal-from-right {
@@ -474,7 +481,7 @@ body {
 
 .section-alt p,
 .section-alt .project-desc {
-  color: rgba(255,255,255,0.88) !important;
+  color: rgba(255,255,255,0.95) !important;
 }
 
 .section-alt .project-chain {
@@ -608,7 +615,7 @@ body {
 
 .about-text--secondary {
   font-size: 0.9375rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
   line-height: 1.7;
   max-width: 520px;
 }
