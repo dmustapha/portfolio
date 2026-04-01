@@ -13,18 +13,30 @@ Personal portfolio site showcasing full-stack and Web3 projects, built with Next
 
 ## What Is This?
 
-A single-page portfolio with fullpage scroll navigation on desktop and native scroll on mobile. Five sections: Hero, About, Projects, Skills, and Contact. Each project slide reveals with directional animations and a horizontal carousel.
+A single-page portfolio with fullpage scroll navigation on desktop and native scroll on mobile. Five sections: Hero, About, Projects, Skills, and Contact. Featured projects get full-width cards with directional reveal animations. Additional projects display in a responsive grid.
 
 ---
 
-## Featured Projects
+## Projects
+
+### Featured
 
 | Project | Type | Stack | Links |
 |---------|------|-------|-------|
+| **GhostFund** | DeFi Vault (Ethereum) | Solidity, TypeScript, Foundry, Chainlink, Aave V3 | [Live](https://ghostfund.vercel.app) / [GitHub](https://github.com/dmustapha/ghostfund) / [Video](https://youtu.be/_UiGqtLKlWI) |
 | **DeepRock** | RWA Platform (Avalanche) | Next.js, Solidity, ERC-4337, WebAuthn | [Live](https://deeprock-app.vercel.app) / [GitHub](https://github.com/dmustapha/deeprock) / [Video](https://youtu.be/YeziPNxaUwE) |
-| **KasGate** | Payment Gateway (Kaspa) | TypeScript, Bun, Express, SQLite | [Live](https://kasgate-production.up.railway.app/dashboard) / [GitHub](https://github.com/dmustapha/kasgate) |
-| **WhaleVault** | Privacy Wallet (Solana) | Next.js, TypeScript, Rust/Anchor | [Live](https://whalevault.vercel.app) / [GitHub](https://github.com/dmustapha/whalevault) |
-| **Cyber Air Hockey** | Multiplayer Game | Next.js, Matter.js, WebSocket | [Live](https://cyber-air-hockey.vercel.app) / [GitHub](https://github.com/dmustapha/cyber-air-hockey) |
+
+### More Projects
+
+| Project | Type | Stack |
+|---------|------|-------|
+| **SLAStream** | Cross-chain Payments (Starknet) | Cairo, Lit Protocol, TypeScript, Next.js |
+| **Agent Auditor** | Trust Scoring (Multi-chain) | TypeScript, Next.js |
+| **DeltaAgent** | AI DeFi Agent (Arbitrum) | TypeScript, Next.js |
+| **TrustTap** | Reputation Platform (Solana) | TypeScript, Next.js |
+| **KasGate** | Payment Gateway (Kaspa) | TypeScript, Express, SQLite |
+| **WhaleVault** | Privacy Wallet (Solana) | Next.js, TypeScript, Rust/Anchor |
+| **CyberpuckChaos** | AI Game (OneChain) | TypeScript, Next.js, Move |
 
 ---
 
@@ -36,7 +48,7 @@ A single-page portfolio with fullpage scroll navigation on desktop and native sc
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS 4 |
 | Fonts | Cormorant Garamond, DM Sans, JetBrains Mono |
-| Animation | CSS transitions + custom reveal hooks |
+| Animation | Web Animations API (WAAPI) with custom reveal hooks |
 | Navigation | Custom fullpage scroll engine (desktop), native scroll (mobile) |
 | Deploy | Vercel |
 
@@ -46,7 +58,7 @@ A single-page portfolio with fullpage scroll navigation on desktop and native sc
 
 - **Fullpage scroll navigation** on desktop with smooth section transitions
 - **Responsive design** that switches to native scroll on mobile
-- **Project carousel** with horizontal snap scrolling and directional reveal animations
+- **Featured + grid project layout** with directional reveal animations and internal scroll
 - **Dot navigation** and sidebar panel synced to current section
 - **Grid overlays and coral dividers** for an architectural visual style
 - **Optimized fonts** via `next/font` with three type families
@@ -83,8 +95,7 @@ portfolio/
     sections/
       HeroSection.tsx   # Landing hero with name and CTA
       AboutSection.tsx  # Background and story
-      ProjectsSection.tsx # Project carousel wrapper
-      ProjectSlide.tsx  # Individual project card
+      ProjectsSection.tsx # Featured cards + grid layout
       SkillsSection.tsx # Skills grid
       ContactSection.tsx # Contact form and social links
     ui/
@@ -95,8 +106,7 @@ portfolio/
       SocialCircle.tsx  # Social media icon link
   hooks/
     useFullpageScroll.ts   # Desktop fullpage scroll engine
-    useProjectCarousel.ts  # Horizontal project carousel logic
-    useRevealAnimations.ts # Section and slide reveal animations
+    useRevealAnimations.ts # Section reveal animations + projects observer
     useDotNavSync.ts       # Dot nav active state sync
     useIsMobile.ts         # Mobile breakpoint detection
   lib/
