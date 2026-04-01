@@ -22,6 +22,24 @@ export const socialLinks: SocialLink[] = [
 
 // ── Projects ──
 export const projects: Project[] = [
+  // ── Featured ──
+  {
+    name: 'GhostFund',
+    chain: 'Ethereum',
+    type: 'DeFi Vault',
+    description:
+      'Private DeFi yield vault that automates Aave V3 strategy monitoring, moves funds with sender privacy, and enforces deposit compliance at the smart contract level.',
+    tech: ['Solidity', 'TypeScript', 'Foundry', 'Chainlink', 'Aave V3'],
+    links: [
+      { label: 'Live', url: 'https://ghostfund.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/ghostfund' },
+      { label: 'Video', url: 'https://youtu.be/_UiGqtLKlWI' },
+    ],
+    revealDirection: 'right',
+    isAlt: false,
+    featured: true,
+    badge: 'Winner — Chainlink Convergence 2026',
+  },
   {
     name: 'DeepRock',
     chain: 'Avalanche',
@@ -34,6 +52,52 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/dmustapha/deeprock' },
       { label: 'Video', url: 'https://youtu.be/YeziPNxaUwE' },
     ],
+    revealDirection: 'left',
+    isAlt: true,
+    featured: true,
+  },
+  // ── Grid ──
+  {
+    name: 'SLAStream',
+    chain: 'Starknet',
+    type: 'Cross-chain Payments',
+    description:
+      'Cross-chain streaming payments for Filecoin storage providers with programmable payment conditions.',
+    tech: ['Cairo', 'Lit Protocol', 'TypeScript', 'Next.js'],
+    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/slastream' }],
+    revealDirection: 'right',
+    isAlt: false,
+  },
+  {
+    name: 'Agent Auditor',
+    chain: 'Multi-chain',
+    type: 'Trust Scoring',
+    description:
+      'Trust scoring system for on-chain AI agents across 6 EVM chains with behavioral analysis.',
+    tech: ['TypeScript', 'Next.js'],
+    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' }],
+    revealDirection: 'right',
+    isAlt: false,
+  },
+  {
+    name: 'DeltaAgent',
+    chain: 'Arbitrum',
+    type: 'AI DeFi Agent',
+    description:
+      'Autonomous AI agent managing leveraged ETH positions on Aave V3 with risk-adjusted strategies.',
+    tech: ['TypeScript', 'Next.js'],
+    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/deltaagent' }],
+    revealDirection: 'right',
+    isAlt: false,
+  },
+  {
+    name: 'TrustTap',
+    chain: 'Solana',
+    type: 'Reputation Platform',
+    description:
+      '8-dimension trust scores for Solana Seeker with QR-based verification and on-chain attestations.',
+    tech: ['TypeScript', 'Next.js'],
+    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/trusttap' }],
     revealDirection: 'right',
     isAlt: false,
   },
@@ -43,13 +107,13 @@ export const projects: Project[] = [
     type: 'Payment Gateway',
     description:
       'Non-custodial payment gateway for Kaspa with real-time transaction monitoring and merchant dashboard.',
-    tech: ['TypeScript', 'Bun', 'Express', 'SQLite', 'Kaspa RPC'],
+    tech: ['TypeScript', 'Express', 'SQLite', 'Kaspa RPC'],
     links: [
       { label: 'Live', url: 'https://kasgate-production.up.railway.app/dashboard' },
       { label: 'GitHub', url: 'https://github.com/dmustapha/kasgate' },
     ],
-    revealDirection: 'left',
-    isAlt: true,
+    revealDirection: 'right',
+    isAlt: false,
   },
   {
     name: 'WhaleVault',
@@ -66,18 +130,15 @@ export const projects: Project[] = [
     isAlt: false,
   },
   {
-    name: 'Cyber Air Hockey',
-    chain: 'WebSocket',
-    type: 'Multiplayer Game',
+    name: 'CyberpuckChaos',
+    chain: 'OneChain',
+    type: 'AI Game',
     description:
-      'Real-time multiplayer air hockey with physics simulation and WebSocket-powered state synchronization.',
-    tech: ['Next.js', 'TypeScript', 'Matter.js', 'WebSocket'],
-    links: [
-      { label: 'Live', url: 'https://cyber-air-hockey.vercel.app' },
-      { label: 'GitHub', url: 'https://github.com/dmustapha/cyber-air-hockey' },
-    ],
-    revealDirection: 'left',
-    isAlt: true,
+      'AI-driven air hockey with LLM chaos agent and Move smart contracts for on-chain game state.',
+    tech: ['TypeScript', 'Next.js', 'Move'],
+    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/cyberpuck-chaos' }],
+    revealDirection: 'right',
+    isAlt: false,
   },
 ];
 
@@ -110,7 +171,7 @@ export const navItems: NavItem[] = [
 export const sidebarPanels: SidebarPanel[] = [
   { id: 'hero', number: 'Portfolio', label: 'Damilola Mustapha' },
   { id: 'about', number: 'About', label: 'Background & Story', sublabel: 'Developer, builder, problem solver' },
-  { id: 'projects', number: 'Work', label: 'Selected Projects' },
+  { id: 'projects', number: 'Work', label: 'Selected Projects', sublabel: '9 projects' },
   { id: 'skills', number: 'Skills', label: 'Technologies & Tools' },
   { id: 'contact', number: 'Contact', label: 'Get in Touch' },
 ];

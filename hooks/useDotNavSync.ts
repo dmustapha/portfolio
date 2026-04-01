@@ -18,20 +18,14 @@ export function useDotNavSync(isMobile: boolean | null) {
     if (isMobile !== true) return;
 
     const sectionElements = document.querySelectorAll('[data-observe]');
-    const projectSlides = document.querySelectorAll('.project-snap-section');
     if (!sectionElements.length) return;
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Project slides map to "projects"
-            if (entry.target.classList.contains('project-snap-section')) {
-              setActiveSection('projects');
-            } else {
-              const id = entry.target.getAttribute('data-observe');
-              if (id) setActiveSection(id);
-            }
+            const id = entry.target.getAttribute('data-observe');
+            if (id) setActiveSection(id);
           }
         });
       },
@@ -39,7 +33,6 @@ export function useDotNavSync(isMobile: boolean | null) {
     );
 
     sectionElements.forEach((el) => observerRef.current!.observe(el));
-    projectSlides.forEach((el) => observerRef.current!.observe(el));
 
     return () => {
       observerRef.current?.disconnect();
