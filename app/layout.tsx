@@ -24,6 +24,17 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Damilola Mustapha | Full-Stack Developer",
   description: "Full-Stack Developer. Blockchain, payments, real-time systems.",
+  openGraph: {
+    title: "Damilola Mustapha | Full-Stack Developer",
+    description: "Full-Stack Developer. Blockchain, payments, real-time systems.",
+    images: [{ url: "/og-image.png", width: 630, height: 630 }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Damilola Mustapha | Full-Stack Developer",
+    description: "Full-Stack Developer. Blockchain, payments, real-time systems.",
+    images: ["/og-image.png"],
+  },
 };
 
 export const viewport = {
