@@ -133,8 +133,7 @@ body {
   position: relative;
   z-index: 2;
   display: flex;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .sidebar-col {
@@ -156,7 +155,6 @@ body {
   margin-left: 33.333%;
   width: 66.667%;
   background: #121212;
-  will-change: transform;
 }
 
 @media (max-width: 1023px) {
@@ -367,8 +365,7 @@ body {
 
 .section-content {
   padding: 4rem 5rem 4rem 4.5rem;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -725,26 +722,8 @@ body {
    ══════════════════════════════════════════════════ */
 
 .projects-wrapper {
-  height: 100vh;
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
   background: #0a0a0a;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,107,74,0.3) transparent;
-}
-
-.projects-wrapper::-webkit-scrollbar {
-  width: 4px;
-}
-
-.projects-wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.projects-wrapper::-webkit-scrollbar-thumb {
-  background: rgba(255,107,74,0.3);
-  border-radius: 2px;
 }
 
 .projects-inner {
@@ -780,6 +759,18 @@ body {
 
 .featured-card-right .links-row {
   justify-content: flex-end;
+}
+
+.featured-card.section-alt {
+  background: rgba(212, 85, 64, 0.65);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.featured-card.section-alt::before {
+  display: none;
 }
 
 .winner-badge {
@@ -865,10 +856,6 @@ body {
 /* ── Mobile: 2-col at tablet, 1-col at phone ── */
 
 @media (max-width: 1023px) {
-  .projects-wrapper {
-    height: auto;
-    overflow: visible;
-  }
   .projects-inner {
     padding: 3rem 1.5rem;
   }

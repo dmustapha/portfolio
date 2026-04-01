@@ -2,8 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 /**
  * Keeps activeSection in sync across dot nav, sidebar, and scroll position.
- * - Desktop: updated imperatively via activateSection callback from fullpage hook.
- * - Mobile: IntersectionObserver on [data-observe] sections.
+ * Uses IntersectionObserver on [data-observe] sections for all devices.
  */
 export function useDotNavSync(isMobile: boolean | null) {
   const [activeSection, setActiveSection] = useState('hero');
@@ -13,9 +12,9 @@ export function useDotNavSync(isMobile: boolean | null) {
     setActiveSection(id);
   }, []);
 
-  // Mobile: IntersectionObserver for section tracking
+  // IntersectionObserver for section tracking
   useEffect(() => {
-    if (isMobile !== true) return;
+    if (isMobile === null) return;
 
     const sectionElements = document.querySelectorAll('[data-observe]');
     if (!sectionElements.length) return;
