@@ -38,7 +38,7 @@ export const projects: Project[] = [
     revealDirection: 'right',
     isAlt: false,
     featured: true,
-    badge: 'Winner — Chainlink Convergence 2026',
+    badge: 'Winner — Chainlink Convergence Hackathon 2026',
   },
   {
     name: 'DeepRock',
@@ -64,7 +64,10 @@ export const projects: Project[] = [
     description:
       'Cross-chain streaming payments for Filecoin storage providers with programmable payment conditions.',
     tech: ['Cairo', 'Lit Protocol', 'TypeScript', 'Next.js'],
-    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/slastream' }],
+    links: [
+      { label: 'Live', url: 'https://slastream.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/slastream' },
+    ],
     revealDirection: 'right',
     isAlt: false,
   },
@@ -75,7 +78,10 @@ export const projects: Project[] = [
     description:
       'Trust scoring system for on-chain AI agents across 6 EVM chains with behavioral analysis.',
     tech: ['TypeScript', 'Next.js'],
-    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' }],
+    links: [
+      { label: 'Live', url: 'https://agent-auditor-two.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' },
+    ],
     revealDirection: 'right',
     isAlt: false,
   },
@@ -86,7 +92,10 @@ export const projects: Project[] = [
     description:
       'Autonomous AI agent managing leveraged ETH positions on Aave V3 with risk-adjusted strategies.',
     tech: ['TypeScript', 'Next.js'],
-    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/deltaagent' }],
+    links: [
+      { label: 'Live', url: 'https://deltaagent.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/deltaagent' },
+    ],
     revealDirection: 'right',
     isAlt: false,
   },
@@ -97,7 +106,10 @@ export const projects: Project[] = [
     description:
       '8-dimension trust scores for Solana Seeker with QR-based verification and on-chain attestations.',
     tech: ['TypeScript', 'Next.js'],
-    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/trusttap' }],
+    links: [
+      { label: 'Live', url: 'https://trusttap.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/trusttap' },
+    ],
     revealDirection: 'right',
     isAlt: false,
   },
@@ -136,7 +148,10 @@ export const projects: Project[] = [
     description:
       'AI-driven air hockey with LLM chaos agent and Move smart contracts for on-chain game state.',
     tech: ['TypeScript', 'Next.js', 'Move'],
-    links: [{ label: 'GitHub', url: 'https://github.com/dmustapha/cyberpuck-chaos' }],
+    links: [
+      { label: 'Live', url: 'https://cyberpuck-chaos.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/cyberpuck-chaos' },
+    ],
     revealDirection: 'right',
     isAlt: false,
   },

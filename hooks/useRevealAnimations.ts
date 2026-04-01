@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 
 interface RevealOptions {
   isMobile: boolean | null;
@@ -13,10 +13,10 @@ declare global {
 }
 
 export function useRevealAnimations({ isMobile }: RevealOptions) {
-  const projectsObserverRef = useRef<IntersectionObserver | null>(null);
-
-  // ── Desktop: triggerReveal for a single element ──
+  // ── WAAPI reveal for a single element ──
   const triggerReveal = useCallback((el: HTMLElement) => {
+    if (el._revealComplete) return;
+
     let fromTransform: string;
     let duration: number;
 
@@ -52,7 +52,6 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
     // Set hidden state
     el.style.opacity = '0';
     el.style.transform = fromTransform;
-    void el.offsetWidth; // Force reflow
 
     const anim = el.animate(
       [
@@ -88,98 +87,13 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
     };
   }, []);
 
-  // ── Desktop: resetReveal for a single element ──
-  const resetReveal = useCallback((el: HTMLElement) => {
-    if (el._revealAnim) {
-      try { el._revealAnim.cancel(); } catch { /* ok */ }
-      el._revealAnim = null;
-    }
-    el._revealComplete = false;
-
-    if (el.classList.contains('reveal-right')) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(80px)';
-    } else if (el.classList.contains('reveal-left')) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(-80px)';
-    } else if (el.classList.contains('reveal-up')) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-    }
-  }, []);
-
-  // ── Reveal all elements within a section ──
-  const revealSection = useCallback(
-    (sectionEl: Element) => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const reveals = sectionEl.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
-          reveals.forEach((el) => triggerReveal(el as HTMLElement));
-        });
-      });
-    },
-    [triggerReveal]
-  );
-
-  // ── Reset all elements within a section ──
-  const resetSection = useCallback(
-    (sectionEl: Element) => {
-      const reveals = sectionEl.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
-      reveals.forEach((el) => resetReveal(el as HTMLElement));
-    },
-    [resetReveal]
-  );
-
-  // ── Setup IntersectionObserver for projects grid cards ──
-  const setupProjectsObserver = useCallback(() => {
-    const wrapper = document.getElementById('projects');
-    if (!wrapper) return;
-
-    // Disconnect previous observer
-    if (projectsObserverRef.current) {
-      projectsObserverRef.current.disconnect();
-      projectsObserverRef.current = null;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            if (!el._revealComplete) {
-              triggerReveal(el);
-            }
-            observer.unobserve(el);
-          }
-        });
-      },
-      { root: wrapper, threshold: 0.15 }
-    );
-
-    const reveals = wrapper.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
-    reveals.forEach((el) => {
-      const htmlEl = el as HTMLElement;
-      if (!htmlEl._revealComplete) {
-        observer.observe(el);
-      }
-    });
-
-    projectsObserverRef.current = observer;
-  }, [triggerReveal]);
-
-  // ── Teardown projects observer ──
-  const teardownProjectsObserver = useCallback(() => {
-    if (projectsObserverRef.current) {
-      projectsObserverRef.current.disconnect();
-      projectsObserverRef.current = null;
-    }
-  }, []);
-
-  // ── Desktop init: set hidden state on all reveal elements ──
+  // ── Desktop: IntersectionObserver for all reveals ──
   useEffect(() => {
     if (isMobile !== false) return;
 
     const allReveals = document.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
+
+    // Set initial hidden state
     allReveals.forEach((el) => {
       const htmlEl = el as HTMLElement;
       if (htmlEl.classList.contains('reveal-right')) {
@@ -194,34 +108,38 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
       }
     });
 
-    // Hero auto-reveal on load (double-rAF)
-    const handleLoad = () => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const heroReveals = document.querySelectorAll(
-            '[data-observe="hero"] .reveal-right, [data-observe="hero"] .reveal-left, [data-observe="hero"] .reveal-up'
-          );
-          heroReveals.forEach((el) => triggerReveal(el as HTMLElement));
-
-          const heroLine = document.getElementById('heroLine');
-          if (heroLine) {
-            heroLine.classList.remove('animate');
-            void heroLine.offsetWidth;
-            heroLine.classList.add('animate');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            triggerReveal(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
           }
         });
-      });
-    };
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+    );
 
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
-    }
+    requestAnimationFrame(() => {
+      allReveals.forEach((el) => observer.observe(el));
+    });
+
+    // Hero coral underline
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const heroLine = document.getElementById('heroLine');
+        if (heroLine) {
+          heroLine.classList.remove('animate');
+          void heroLine.offsetWidth;
+          heroLine.classList.add('animate');
+        }
+      });
+    });
+
+    return () => observer.disconnect();
   }, [isMobile, triggerReveal]);
 
-  // ── Mobile: IntersectionObserver for reveals ──
+  // ── Mobile: CSS-based reveals via IntersectionObserver ──
   useEffect(() => {
     if (isMobile !== true) return;
 
@@ -247,7 +165,7 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
       revealElements.forEach((el) => observer.observe(el));
     });
 
-    // Hero safety net + coral underline on mobile
+    // Hero safety net
     requestAnimationFrame(() => {
       const heroReveals = document.querySelectorAll(
         '[data-observe="hero"] .reveal-right, [data-observe="hero"] .reveal-left, [data-observe="hero"] .reveal-up'
@@ -282,13 +200,4 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
 
     return () => observer.disconnect();
   }, [isMobile]);
-
-  return {
-    revealSection,
-    resetSection,
-    setupProjectsObserver,
-    teardownProjectsObserver,
-    triggerReveal,
-    resetReveal,
-  };
 }
