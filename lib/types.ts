@@ -18,6 +18,8 @@ export interface Project {
   links: ProjectLink[];
   revealDirection: 'right' | 'left';
   isAlt: boolean;
+  featured?: boolean;
+  badge?: string;
 }
 
 export interface SkillGroup {

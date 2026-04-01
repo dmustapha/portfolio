@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { GridOverlays } from '@/components/layout/GridOverlays';
 import { CoralDivider } from '@/components/layout/CoralDivider';
 import { DotNav } from '@/components/layout/DotNav';
@@ -13,38 +13,27 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useDotNavSync } from '@/hooks/useDotNavSync';
 import { useRevealAnimations } from '@/hooks/useRevealAnimations';
-import { useProjectCarousel } from '@/hooks/useProjectCarousel';
 import { useFullpageScroll } from '@/hooks/useFullpageScroll';
 
 export default function Home() {
   const isMobile = useIsMobile();
   const { activeSection, activateSection } = useDotNavSync(isMobile);
-  const [displayProjectIdx, setDisplayProjectIdx] = useState(0);
-  const activeProjectIdxRef = useRef(0);
 
   const {
     revealSection,
     resetSection,
-    revealProjectSlide,
-    resetProjectSlide,
-    showScrollHint,
+    setupProjectsObserver,
+    teardownProjectsObserver,
   } = useRevealAnimations({ isMobile });
 
-  // ── Project index change handler ──
-  const handleProjectIdxChange = useCallback((idx: number) => {
-    activeProjectIdxRef.current = idx;
-    setDisplayProjectIdx(idx);
+  // ── Projects scroll boundary check ──
+  const onProjectsScrollCheck = useCallback(() => {
+    const wrapper = document.getElementById('projects');
+    if (!wrapper) return { atTop: true, atBottom: true };
+    const atTop = wrapper.scrollTop <= 1;
+    const atBottom = wrapper.scrollTop + wrapper.clientHeight >= wrapper.scrollHeight - 1;
+    return { atTop, atBottom };
   }, []);
-
-  const {
-    resetCarousel,
-    navigateCarousel,
-  } = useProjectCarousel({
-    isMobile,
-    onRevealSlide: revealProjectSlide,
-    onResetSlide: resetProjectSlide,
-    onProjectIdxChange: handleProjectIdxChange,
-  });
 
   // ── Section change handler (called by fullpage scroll) ──
   const handleSectionChange = useCallback(
@@ -56,11 +45,14 @@ export default function Home() {
       const target = sections[idx];
       const prev = sections[prevIdx];
 
-      // Reset carousel on entering projects
       const isTargetProjects =
         target?.id === 'projects' || target?.getAttribute('data-observe') === 'projects';
-      if (isTargetProjects) {
-        resetCarousel(prevIdx > idx);
+      const isPrevProjects =
+        prev?.id === 'projects' || prev?.getAttribute('data-observe') === 'projects';
+
+      // Teardown projects observer when leaving
+      if (isPrevProjects && !isTargetProjects) {
+        teardownProjectsObserver();
       }
 
       // Reset previous section reveals
@@ -73,20 +65,16 @@ export default function Home() {
       if (observeId) activateSection(observeId);
 
       if (isTargetProjects) {
-        // Reset all project slide reveals first
-        const snap = document.getElementById('projectsSnap');
-        if (snap) {
-          const slides = snap.querySelectorAll('.project-snap-section');
-          slides.forEach((slide) => {
-            resetSection(slide);
-          });
+        // Reset scroll position based on direction
+        const wrapper = document.getElementById('projects');
+        if (wrapper) {
+          wrapper.scrollTop = prevIdx < idx ? 0 : wrapper.scrollHeight;
         }
 
-        // Reveal current project slide after parent animation settles
+        // Setup observer and reveal featured cards
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            revealProjectSlide(activeProjectIdxRef.current);
-            showScrollHint();
+            setupProjectsObserver();
           });
         });
       } else if (target) {
@@ -107,7 +95,7 @@ export default function Home() {
         }
       }
     },
-    [activateSection, resetSection, revealSection, revealProjectSlide, resetCarousel, showScrollHint]
+    [activateSection, resetSection, revealSection, setupProjectsObserver, teardownProjectsObserver]
   );
 
   // ── isOnProjects check ──
@@ -135,7 +123,7 @@ export default function Home() {
   const fullpage = useFullpageScroll({
     isMobile,
     onSectionChange: handleSectionChangeTracked,
-    onCarouselNavigate: navigateCarousel,
+    onProjectsScrollCheck,
     isOnProjects,
   });
 
@@ -178,19 +166,6 @@ export default function Home() {
       fullpage.goToSectionById(id);
     },
     [isMobile, fullpage, activateSection]
-  );
-
-  // ── Sidebar project indicator click ──
-  const handleProjectIndicatorClick = useCallback(
-    (idx: number) => {
-      if (isMobile) {
-        const target = document.querySelector(`.project-snap-section[data-project="${idx}"]`);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
-      // Desktop: indicator click is handled by the carousel's own listener
-    },
-    [isMobile]
   );
 
   // ── Mobile safety net ──
@@ -239,16 +214,12 @@ export default function Home() {
 
       <section id="hero">
         <div className="architect-layout">
-          <Sidebar
-            activeSection={activeSection}
-            activeProjectIdx={displayProjectIdx}
-            onProjectIndicatorClick={handleProjectIndicatorClick}
-          />
+          <Sidebar activeSection={activeSection} />
 
           <div className="main-col">
             <HeroSection onNavigate={handleNavigate} />
             <AboutSection />
-            <ProjectsSection currentProjectIdx={displayProjectIdx} />
+            <ProjectsSection />
             <SkillsSection />
             <ContactSection />
           </div>

@@ -13,7 +13,7 @@ declare global {
 }
 
 export function useRevealAnimations({ isMobile }: RevealOptions) {
-  const scrollHintShownRef = useRef(false);
+  const projectsObserverRef = useRef<IntersectionObserver | null>(null);
 
   // ── Desktop: triggerReveal for a single element ──
   const triggerReveal = useCallback((el: HTMLElement) => {
@@ -130,46 +130,49 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
     [resetReveal]
   );
 
-  // ── Reveal a specific project slide by index ──
-  const revealProjectSlide = useCallback(
-    (slideIdx: number) => {
-      const snap = document.getElementById('projectsSnap');
-      if (!snap) return;
-      const slide = snap.querySelectorAll('.project-snap-section')[slideIdx];
-      if (!slide) return;
-      const reveals = slide.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
-      reveals.forEach((el) => triggerReveal(el as HTMLElement));
-    },
-    [triggerReveal]
-  );
+  // ── Setup IntersectionObserver for projects grid cards ──
+  const setupProjectsObserver = useCallback(() => {
+    const wrapper = document.getElementById('projects');
+    if (!wrapper) return;
 
-  // ── Reset a specific project slide by index ──
-  const resetProjectSlide = useCallback(
-    (slideIdx: number) => {
-      const snap = document.getElementById('projectsSnap');
-      if (!snap) return;
-      const slide = snap.querySelectorAll('.project-snap-section')[slideIdx];
-      if (!slide) return;
-      const reveals = slide.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
-      reveals.forEach((el) => resetReveal(el as HTMLElement));
-    },
-    [resetReveal]
-  );
+    // Disconnect previous observer
+    if (projectsObserverRef.current) {
+      projectsObserverRef.current.disconnect();
+      projectsObserverRef.current = null;
+    }
 
-  // ── Show scroll hint once ──
-  const showScrollHint = useCallback(() => {
-    if (scrollHintShownRef.current) return;
-    scrollHintShownRef.current = true;
-    const hint = document.getElementById('scrollHint');
-    if (!hint) return;
-    hint.style.display = 'flex';
-    hint.classList.remove('animate');
-    void hint.offsetWidth;
-    hint.classList.add('animate');
-    setTimeout(() => {
-      hint.style.display = 'none';
-      hint.classList.remove('animate');
-    }, 5500);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            if (!el._revealComplete) {
+              triggerReveal(el);
+            }
+            observer.unobserve(el);
+          }
+        });
+      },
+      { root: wrapper, threshold: 0.15 }
+    );
+
+    const reveals = wrapper.querySelectorAll('.reveal-right, .reveal-left, .reveal-up');
+    reveals.forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      if (!htmlEl._revealComplete) {
+        observer.observe(el);
+      }
+    });
+
+    projectsObserverRef.current = observer;
+  }, [triggerReveal]);
+
+  // ── Teardown projects observer ──
+  const teardownProjectsObserver = useCallback(() => {
+    if (projectsObserverRef.current) {
+      projectsObserverRef.current.disconnect();
+      projectsObserverRef.current = null;
+    }
   }, []);
 
   // ── Desktop init: set hidden state on all reveal elements ──
@@ -283,9 +286,8 @@ export function useRevealAnimations({ isMobile }: RevealOptions) {
   return {
     revealSection,
     resetSection,
-    revealProjectSlide,
-    resetProjectSlide,
-    showScrollHint,
+    setupProjectsObserver,
+    teardownProjectsObserver,
     triggerReveal,
     resetReveal,
   };
