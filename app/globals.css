@@ -22,15 +22,12 @@
 
 html {
   background: #0F0F0F;
-  overflow: hidden;
 }
 
 body {
   font-family: var(--font-sans), 'DM Sans', system-ui, sans-serif;
   color: #E0E0E0;
   background: #0F0F0F;
-  overflow: hidden;
-  height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;
