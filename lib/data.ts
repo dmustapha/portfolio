@@ -167,7 +167,7 @@ export const skillGroups: SkillGroup[] = [
 // ── About ──
 export const aboutParagraphs = [
   'I build full-stack software: payment gateways, real-time multiplayer games, privacy tools, and asset platforms. Clean architecture, tested code, built for real users.',
-  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Shipped four projects across four chains in six weeks. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
+  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Nine projects shipped across seven chains. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Team member on TruthBounty, which placed 2nd at the Seedify Hackathon on BNB Chain and raised $750K.",
   'I studied medicine (MBBS) before writing code. It taught me how to diagnose problems and sit with complexity until I find the root cause.',
 ] as const;
 
