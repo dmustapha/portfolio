@@ -159,9 +159,10 @@ export const projects: Project[] = [
 
 // ── Skills ──
 export const skillGroups: SkillGroup[] = [
-  { label: 'Languages', skills: ['TypeScript', 'JavaScript', 'Solidity', 'Rust', 'Python'] },
+  { label: 'Languages', skills: ['TypeScript', 'JavaScript', 'Solidity', 'Rust', 'Cairo', 'Python'] },
   { label: 'Frameworks', skills: ['Next.js', 'React', 'Node.js', 'Express'] },
-  { label: 'Tools & Infra', skills: ['Git', 'Bun', 'SQLite', 'Tailwind CSS', 'Vercel'] },
+  { label: 'Web3', skills: ['Ethereum', 'Solana', 'Avalanche', 'Starknet', 'Arbitrum', 'Kaspa'] },
+  { label: 'Tools & Infra', skills: ['Foundry', 'Anchor', 'Git', 'Bun', 'SQLite', 'Tailwind CSS', 'Vercel', 'Railway'] },
 ];
 
 // ── About ──

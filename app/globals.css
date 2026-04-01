@@ -608,10 +608,10 @@ body {
 }
 
 .about-text--secondary {
-  font-size: 0.9375rem;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.7;
-  max-width: 520px;
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  max-width: 560px;
 }
 
 /* ══════════════════════════════════════════════════
@@ -1157,8 +1157,8 @@ body {
     line-height: 1.7;
   }
   .about-text--secondary {
-    font-size: 0.875rem;
-    line-height: 1.65;
+    font-size: 0.9375rem;
+    line-height: 1.7;
   }
 
   /* Contact email - prevent overflow */
