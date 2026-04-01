@@ -758,6 +758,10 @@ body {
   justify-content: flex-end;
 }
 
+.featured-card-right .project-desc {
+  margin-left: auto;
+}
+
 .featured-card.section-alt {
   background: rgba(212, 85, 64, 0.65);
   backdrop-filter: blur(20px) saturate(1.2);
