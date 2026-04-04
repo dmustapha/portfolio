@@ -1,6 +1,6 @@
 # Damilola Mustapha: Developer Portfolio
 
-Personal portfolio site showcasing full-stack and Web3 projects, built with Next.js 16 and Tailwind CSS 4.
+Personal portfolio page
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
@@ -8,12 +8,6 @@ Personal portfolio site showcasing full-stack and Web3 projects, built with Next
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ![Hero](docs/images/hero.png)
-
----
-
-## What Is This?
-
-A single-page portfolio with fullpage scroll navigation on desktop and native scroll on mobile. Five sections: Hero, About, Projects, Skills, and Contact. Featured projects get full-width cards with directional reveal animations. Additional projects display in a responsive grid.
 
 ---
 
