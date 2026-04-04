@@ -17,7 +17,7 @@ Personal portfolio page
 
 | Project | Type | Stack | Links |
 |---------|------|-------|-------|
-| **GhostFund** | DeFi Vault (Ethereum) | Solidity, TypeScript, Foundry, Chainlink, Aave V3 | [Live](https://ghostfund.vercel.app) / [GitHub](https://github.com/dmustapha/ghostfund) / [Video](https://youtu.be/_UiGqtLKlWI) |
+| **GhostFund(winner chainlink convergence hackathon 2026)** | DeFi Vault (Ethereum) | Solidity, TypeScript, Foundry, Chainlink, Aave V3 | [Live](https://ghostfund.vercel.app) / [GitHub](https://github.com/dmustapha/ghostfund) / [Video](https://youtu.be/_UiGqtLKlWI) |
 | **DeepRock** | RWA Platform (Avalanche) | Next.js, Solidity, ERC-4337, WebAuthn | [Live](https://deeprock-app.vercel.app) / [GitHub](https://github.com/dmustapha/deeprock) / [Video](https://youtu.be/YeziPNxaUwE) |
 
 ### More Projects
@@ -47,15 +47,6 @@ Personal portfolio page
 | Deploy | Vercel |
 
 ---
-
-## Features
-
-- **Fullpage scroll navigation** on desktop with smooth section transitions
-- **Responsive design** that switches to native scroll on mobile
-- **Featured + grid project layout** with directional reveal animations and internal scroll
-- **Dot navigation** and sidebar panel synced to current section
-- **Grid overlays and coral dividers** for an architectural visual style
-- **Optimized fonts** via `next/font` with three type families
 
 ---
 
