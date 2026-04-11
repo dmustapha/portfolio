@@ -54,7 +54,7 @@ export const projects: Project[] = [
     revealDirection: 'left',
     isAlt: true,
     featured: true,
-    badge: '🥈 2nd Place — GoldRush Agentic Track 2026',
+    badge: '🥈 Winner — GoldRush Agentic Track, Trends.fun Hackathon 2026',
   },
   // ── Grid ──
   {
@@ -169,7 +169,7 @@ export const skillGroups: SkillGroup[] = [
 // ── About ──
 export const aboutParagraphs = [
   'I build full-stack software: payment gateways, real-time multiplayer games, privacy tools, and asset platforms. Clean architecture, tested code, built for real users.',
-  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Placed 2nd in the GoldRush Agentic Track with AgentAuditor. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
+  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Won the GoldRush Agentic Track at Trends.fun with AgentAuditor. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
   'I studied medicine (MBBS) before writing code. It taught me how to diagnose problems and sit with complexity until I find the root cause.',
 ] as const;
 
