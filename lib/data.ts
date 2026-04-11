@@ -41,6 +41,23 @@ export const projects: Project[] = [
     badge: 'Winner — Chainlink Convergence Hackathon 2026',
   },
   {
+    name: 'AgentAuditor',
+    chain: 'Multi-chain',
+    type: 'Trust Scoring',
+    description:
+      'Trust scoring for on-chain AI agents across 7 chains. Behavioral profiling across 9 dimensions, LLM evaluation via Venice AI, on-chain attestations via ERC-7506. Query a score before any OTC deal or liquidity route.',
+    tech: ['TypeScript', 'Next.js', 'Solidity', 'Venice AI', 'GoldRush'],
+    links: [
+      { label: 'Live', url: 'https://agent-auditor-solana.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' },
+    ],
+    revealDirection: 'left',
+    isAlt: true,
+    featured: true,
+    badge: '🥈 2nd Place — GoldRush Agentic Track 2026',
+  },
+  // ── Grid ──
+  {
     name: 'DeepRock',
     chain: 'Avalanche',
     type: 'RWA Platform',
@@ -52,11 +69,9 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/dmustapha/deeprock' },
       { label: 'Video', url: 'https://youtu.be/YeziPNxaUwE' },
     ],
-    revealDirection: 'left',
-    isAlt: true,
-    featured: true,
+    revealDirection: 'right',
+    isAlt: false,
   },
-  // ── Grid ──
   {
     name: 'SLAStream',
     chain: 'Starknet',
@@ -67,20 +82,6 @@ export const projects: Project[] = [
     links: [
       { label: 'Live', url: 'https://slastream.vercel.app' },
       { label: 'GitHub', url: 'https://github.com/dmustapha/slastream' },
-    ],
-    revealDirection: 'right',
-    isAlt: false,
-  },
-  {
-    name: 'Agent Auditor',
-    chain: 'Multi-chain',
-    type: 'Trust Scoring',
-    description:
-      'Trust scoring system for on-chain AI agents across 6 EVM chains with behavioral analysis.',
-    tech: ['TypeScript', 'Next.js'],
-    links: [
-      { label: 'Live', url: 'https://agent-auditor-two.vercel.app' },
-      { label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' },
     ],
     revealDirection: 'right',
     isAlt: false,
@@ -168,7 +169,7 @@ export const skillGroups: SkillGroup[] = [
 // ── About ──
 export const aboutParagraphs = [
   'I build full-stack software: payment gateways, real-time multiplayer games, privacy tools, and asset platforms. Clean architecture, tested code, built for real users.',
-  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Nine projects shipped across seven chains. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Team member on TruthBounty, which placed 2nd at the Seedify Hackathon on BNB Chain and raised $750K.",
+  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Placed 2nd in the GoldRush Agentic Track with AgentAuditor. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
   'I studied medicine (MBBS) before writing code. It taught me how to diagnose problems and sit with complexity until I find the root cause.',
 ] as const;
 
