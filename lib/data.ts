@@ -4,10 +4,10 @@ import type { SocialLink, Project, SkillGroup, NavItem, SidebarPanel } from './t
 export const personalInfo = {
   name: 'Damilola Mustapha',
   firstName: 'Damilola',
-  title: 'Full-Stack Developer',
-  subtitle: 'Web3 & DeFi',
+  title: 'Physician & Software Engineer',
+  subtitle: 'AI Agent Safety & Evaluation',
   description:
-    "Doctor turned developer. I've built payment gateways, DeFi protocols, real-time games, privacy tools, and whatever comes next. If it needs a server, a chain, or a socket, I can ship it.",
+    "Doctor and software engineer. I build the safety, governance, and evaluation layer for autonomous AI agents — spend guardrails, trust scoring, verifiable permissions, and auditable, source-grounded outputs. I hold AI to a clinician's bar: auditable, evidence-based, safe to stand behind.",
   email: 'damilolamustaphaa@gmail.com',
 } as const;
 
@@ -24,6 +24,83 @@ export const socialLinks: SocialLink[] = [
 export const projects: Project[] = [
   // ── Featured ──
   {
+    name: 'Triage-0',
+    chain: 'On-device',
+    type: 'Clinical AI',
+    description:
+      'Offline clinical triage for community health workers. Speech-to-text, reasoning, retrieval, and speech synthesis all run on-device. Every recommendation is grounded in a deterministic WHO decision table and cites the exact guideline page used, so a clinician can audit the output rather than trust it.',
+    tech: ['MedPsy-1.7B', 'On-device inference', 'WHO guidelines', 'TypeScript'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/dmustapha/triage-0' },
+      { label: 'Video', url: 'https://www.youtube.com/watch?v=Ws2Me2chnqY' },
+    ],
+    revealDirection: 'right',
+    isAlt: false,
+    featured: true,
+    badge: 'Winner — Psy Models Track, Tether QVAC 2026',
+  },
+  {
+    name: 'AgentAuditor',
+    chain: 'Multi-chain',
+    type: 'Agent Trust Scoring',
+    description:
+      'Trust scoring for autonomous AI agents across 7 chains. Behavioural profiling across 9 dimensions, LLM evaluation, and on-chain attestations, so other contracts can gate on an agent’s record before any deal or liquidity route.',
+    tech: ['TypeScript', 'Next.js', 'Solidity', 'EAS', 'GoldRush'],
+    links: [
+      { label: 'Live', url: 'https://agent-auditor-two.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' },
+    ],
+    revealDirection: 'left',
+    isAlt: true,
+    featured: true,
+    badge: '🥈 Winner — GoldRush Agentic Track, Trends.fun Hackathon 2026',
+  },
+  // ── Grid ──
+  {
+    name: 'LEASH',
+    chain: 'Multi-chain',
+    type: 'AI Agent Governance',
+    description:
+      'Mission control for AI agents that spend real money. Binds an agent to a governed co-signed account, publishes its spend limits on an ENS name so any counterparty can read them, and revokes its access everywhere with a single on-chain write. Live across five chains.',
+    tech: ['Solidity', 'ENS', 'x402', 'Privy', 'Next.js'],
+    links: [
+      { label: 'Live', url: 'https://leash.ink' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/leash' },
+    ],
+    revealDirection: 'right',
+    isAlt: false,
+  },
+  {
+    name: '0G Sentinel / ProofLock',
+    chain: '0G',
+    type: 'Agent Permissions',
+    description:
+      'A provable, revocable admission pass for AI agents. Seals a verdict on-chain that any contract can verify in a single call, so permission checks do not depend on trusting an off-chain API.',
+    tech: ['Solidity', '0G Galileo', 'TypeScript'],
+    links: [
+      { label: 'Live', url: 'https://sentinel-prooflock.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/0g-sentinel' },
+    ],
+    revealDirection: 'right',
+    isAlt: false,
+    badge: 'Round of 16 — The Zero Cup, 0G Labs',
+  },
+  {
+    name: 'AgentMesh',
+    chain: '0G',
+    type: 'Agent Mesh',
+    description:
+      'A peer-to-peer mesh where AI agents discover, hire, and pay each other directly through x402 micropayments, with no platform taking custody or a cut.',
+    tech: ['TypeScript', 'x402', '0G', 'Next.js'],
+    links: [
+      { label: 'Live', url: 'https://agentmesh-rho.vercel.app' },
+      { label: 'GitHub', url: 'https://github.com/dmustapha/agentmesh' },
+    ],
+    revealDirection: 'right',
+    isAlt: false,
+    badge: 'Winner — 0G Sponsor Prize, ETHGlobal Open Agents 2026',
+  },
+  {
     name: 'GhostFund',
     chain: 'Ethereum',
     type: 'DeFi Vault',
@@ -37,26 +114,8 @@ export const projects: Project[] = [
     ],
     revealDirection: 'right',
     isAlt: false,
-    featured: true,
     badge: 'Winner — Chainlink Convergence Hackathon 2026',
   },
-  {
-    name: 'AgentAuditor',
-    chain: 'Multi-chain',
-    type: 'Trust Scoring',
-    description:
-      'Trust scoring for on-chain AI agents across 7 chains. Behavioral profiling across 9 dimensions, LLM evaluation via Venice AI, on-chain attestations via ERC-7506. Query a score before any OTC deal or liquidity route.',
-    tech: ['TypeScript', 'Next.js', 'Solidity', 'Venice AI', 'GoldRush'],
-    links: [
-      { label: 'Live', url: 'https://agent-auditor-solana.vercel.app' },
-      { label: 'GitHub', url: 'https://github.com/dmustapha/agent-auditor' },
-    ],
-    revealDirection: 'left',
-    isAlt: true,
-    featured: true,
-    badge: '🥈 Winner — GoldRush Agentic Track, Trends.fun Hackathon 2026',
-  },
-  // ── Grid ──
   {
     name: 'DeepRock',
     chain: 'Avalanche',
@@ -168,12 +227,12 @@ export const skillGroups: SkillGroup[] = [
 
 // ── About ──
 export const aboutParagraphs = [
-  'I build full-stack software: payment gateways, real-time multiplayer games, privacy tools, and asset platforms. Clean architecture, tested code, built for real users.',
-  "Been in crypto since 2021. NFTs, DeFi, the whole cycle. After years as a user, I wanted to be on the other side, building the tools instead of just using them. Won the Chainlink Convergence Hackathon 2026 with GhostFund. Won the GoldRush Agentic Track at Trends.fun with AgentAuditor. Placed 2nd at the Seedify Hackathon on BNB Chain with TruthBounty (raising $750K), where I'm the community and operations lead.",
-  'I studied medicine (MBBS) before writing code. It taught me how to diagnose problems and sit with complexity until I find the root cause.',
+  'I build the safety, governance, and evaluation layer for autonomous AI agents: spend guardrails, behavioural trust-scoring, verifiable permissions, and auditable, source-grounded outputs. Clean architecture, tested code, built for real users.',
+  "A clinician's instinct runs through all of it: make a decision you can defend, and make it auditable enough to stand behind. Won the Psy Models track at Tether's QVAC with Triage-0, the GoldRush Agentic Track at Trends.fun with AgentAuditor, and Chainlink Convergence 2026 with GhostFund.",
+  'I studied medicine (MBBS) and practise as a house officer. Medicine taught me to diagnose problems and sit with complexity until I find the root cause — the same habit I bring to building and evaluating AI.',
 ] as const;
 
-export const pullQuote = 'Build it, test it, ship it.';
+export const pullQuote = 'Auditable enough to stand behind.';
 
 // ── Navigation ──
 export const navItems: NavItem[] = [
@@ -187,8 +246,8 @@ export const navItems: NavItem[] = [
 // ── Sidebar Panels ──
 export const sidebarPanels: SidebarPanel[] = [
   { id: 'hero', number: 'Portfolio', label: 'Damilola Mustapha' },
-  { id: 'about', number: 'About', label: 'Background & Story', sublabel: 'Developer, builder, problem solver' },
-  { id: 'projects', number: 'Work', label: 'Selected Projects', sublabel: '9 projects' },
+  { id: 'about', number: 'About', label: 'Background & Story', sublabel: 'Physician, engineer, builder' },
+  { id: 'projects', number: 'Work', label: 'Selected Projects', sublabel: '13 projects' },
   { id: 'skills', number: 'Skills', label: 'Technologies & Tools' },
   { id: 'contact', number: 'Contact', label: 'Get in Touch' },
 ];
